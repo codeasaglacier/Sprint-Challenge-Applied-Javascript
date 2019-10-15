@@ -32,7 +32,7 @@ Edit this document to include your answers after each question. Make sure to lea
 <!-- The Document Object Model is a tree like representation of the html structure. -->
 
 2. What is an event? 
-<!-- An event occurs when the page someone interacts with the page. -->
+<!-- An event occurs when someone interacts with the page. -->
 
 3. What is an event listener? 
 <!-- A method that watches for events. -->
