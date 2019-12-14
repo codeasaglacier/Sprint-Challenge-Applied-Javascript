@@ -46,18 +46,23 @@ const makeCarousel = () => {
   right.classList.add('right-button')
 
   const imgs = [img1, img2, img3, img4]
-  imgs.forEach(img => {
-    img.classList.add('img')
-  })
+  // imgs.forEach(img => {
+  //   img.classList.remove('img')
+  // })
 
-  img1.classList.remove('img')
+  // img1.classList.remove('carousel img')
 
-  left.addEventListener('click', (i) => {
-    imgs[i--].classList.toggle('img')
+  left.addEventListener('click', () => {
+    for (const i = 0; i < imgs.length; i--) {
+      imgs[i--].classList.toggle('img')
+    }
   })
 
   right.addEventListener('click', () => {
-    img[i++].classList.toggle('img')
+    for (const i = 0; i < imgs.length; i++) {
+      img[i++].classList.toggle('img')
+    }
+    // img1.classList.toggle('carousel img')
   })
 
   console.log('Carousel: ', carousel)
