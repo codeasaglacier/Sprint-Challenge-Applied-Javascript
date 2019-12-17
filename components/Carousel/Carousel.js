@@ -18,57 +18,86 @@
   </div>
 */
 
+const imgs = ["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/trees.jpeg", "./assets/carousel/turntable.jpeg"]
 
 
-const makeCarousel = () => {
+const makeCarousel = (photos) => {
   const carousel = document.createElement('div')
   const left = document.createElement('div')
-  const img1 = document.createElement('img')
-  const img2 = document.createElement('img')
-  const img3 = document.createElement('img')
-  const img4 = document.createElement('img')
   const right = document.createElement('div')
+  carousel.append(left)
+  carousel.append(right)
   
-  img1.src = "./assets/carousel/mountains.jpeg"
-  img2.src = "./assets/carousel/computer.jpeg"
-  img3.src = "./assets/carousel/trees.jpeg"
-  img4.src = "./assets/carousel/turntable.jpeg"
-  
-  carousel.appendChild(left)
-  carousel.appendChild(img1)
-  carousel.appendChild(img2)
-  carousel.appendChild(img3)
-  carousel.appendChild(img4)
-  carousel.appendChild(right)
-
   carousel.classList.add('carousel')
   left.classList.add('left-button')
   right.classList.add('right-button')
 
-  const imgs = [img1, img2, img3, img4]
-  // imgs.forEach(img => {
-  //   img.classList.remove('img')
-  // })
-
-  // img1.classList.remove('carousel img')
-
+  const img = document.createElement('img')
+  
+  photos.forEach(() => {
+    carousel.append(img)
+  })
+  
+  let current = 0
+  img.src = imgs[current]
+  
+  
   left.addEventListener('click', () => {
-    for (const i = 0; i < imgs.length; i--) {
-      imgs[i--].classList.toggle('img')
+    img.src = imgs[current -= 1]
+    img.style.display = 'block'
+    if (current < 0) {
+      current = img.length - 1
     }
   })
 
   right.addEventListener('click', () => {
-    for (const i = 0; i < imgs.length; i++) {
-      img[i++].classList.toggle('img')
+    img.src = imgs[current += 1]
+    img.style.display = 'block'
+    if (current > img.length - 1) {
+      current = 0
     }
-    // img1.classList.toggle('carousel img')
   })
+  
+  // const img1 = document.createElement('img')
+  // const img2 = document.createElement('img')
+  // const img3 = document.createElement('img')
+  // const img4 = document.createElement('img')
+  
+  // img1.src = "./assets/carousel/mountains.jpeg"
+  // img2.src = "./assets/carousel/computer.jpeg"
+  // img3.src = "./assets/carousel/trees.jpeg"
+  // img4.src = "./assets/carousel/turntable.jpeg"
+  
+  // carousel.appendChild(img1)
+  // carousel.appendChild(img2)
+  // carousel.appendChild(img3)
+  // carousel.appendChild(img4)
+  
+  // imgs.forEach(img => {
+  //   img.classList.remove('img')
+  // })
+  
+  // img1.classList.remove('carousel img')
 
-  console.log('Carousel: ', carousel)
+  // left.addEventListener('click', () => {
+    //   for (const i = 0; i < imgs.length; i--) {
+  //     imgs[i--].classList.toggle('img')
+  //   }
+  // })
+  
+  // right.addEventListener('click', () => {
+    //   for (const i = 0; i < imgs.length; i++) {
+      //     img[i++].classList.toggle('img')
+      //   }
+      //   // img1.classList.toggle('carousel img')
+      // })
+      
+      
+      
+      console.log('Carousel: ', carousel)
+      
+      return carousel
+    }
 
-  return carousel
-}
-
-const carouselContainer = document.querySelector('.carousel-container')
-carouselContainer.appendChild(makeCarousel())
+    const carouselContainer = document.querySelector('.carousel-container')
+    carouselContainer.appendChild(makeCarousel(imgs))
