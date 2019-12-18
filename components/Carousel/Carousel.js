@@ -44,22 +44,22 @@ const makeCarousel = (photos) => {
   
   left.addEventListener('click', () => {
     current -= 1
-    img.style.display = 'block'
     if (current < 0) {
       current = imgs.length - 1
       console.log('it worked!L')
     }
+    img.style.display = 'block'
     img.src = imgs[current]
   })
 
   right.addEventListener('click', () => {
     current += 1
-    img.style.display = 'block'
     console.log(current)
     if (current > imgs.length - 1) {
       current = 0
       console.log('it worked!R')
     }
+    img.style.display = 'block'
     img.src = imgs[current]
   })
   
